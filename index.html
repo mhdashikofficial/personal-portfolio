@@ -1,70 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wafia's Madness Meter</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #f7e1f0;
-            padding: 50px;
-        }
-        #meter {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-        #forgiveBtn {
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-        }
-        #finalMessage {
-            display: none;
-            font-size: 24px;
-            color: darkred;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Wafia's Madness Meter</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      position: relative;
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+    }
+    h1 {
+      color: #ff5e62;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #333;
+      font-size: 1.2em;
+    }
+    #forgiveButton {
+      background: #ff5e62;
+      border: none;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+    }
+    #forgiveButton:hover {
+      background: #ff7b7b;
+    }
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #ff5e62;
+    }
+  </style>
 </head>
 <body>
-    <h1>Wafia's Madness Meter 🔥</h1>
-    <p>Analyzing... Please wait...</p>
-    <p id="meter">0%</p>
-    
-    <button id="forgiveBtn" onclick="showLove()">Click to Forgive Ashik</button>
-    <p id="finalMessage">Okay, okay! I surrender! 😍 I love you, my queen! ❤️</p>
-    
-    <script>
-        let meter = document.getElementById("meter");
-        let forgiveBtn = document.getElementById("forgiveBtn");
-        let finalMessage = document.getElementById("finalMessage");
-        let angerLevel = 0;
-        let interval = setInterval(() => {
-            angerLevel += 10;
-            meter.innerText = angerLevel + "%";
-            if (angerLevel >= 99) {
-                clearInterval(interval);
-                meter.innerText = "WARNING! Wafia is too mad! 😱";
-            }
-        }, 500);
+  <div class="container">
+    <h1>Wafia's Madness Meter 😈</h1>
+    <p>Your anger level is a damn 99%! Prepare to be bombarded by Ashik's pathetic attempts to win your f***ing love, huh?</p>
+    <button id="forgiveButton">Click to Forgive Ashik</button>
+    <div class="message" id="loveMessage">Fine, you stubborn bitch—I surrender! I f***ing love you, my queen! 😍</div>
+  </div>
 
-        forgiveBtn.addEventListener("mouseover", () => {
-            let x = Math.random() * (window.innerWidth - 200);
-            let y = Math.random() * (window.innerHeight - 100);
-            forgiveBtn.style.left = x + "px";
-            forgiveBtn.style.top = y + "px";
-        });
+  <script>
+    const forgiveButton = document.getElementById('forgiveButton');
+    const loveMessage = document.getElementById('loveMessage');
+    let attempts = 0;
 
-        function showLove() {
-            forgiveBtn.style.display = "none";
-            finalMessage.style.display = "block";
-        }
-    </script>
+    forgiveButton.addEventListener('mouseover', function() {
+      if (attempts < 3) {
+        // Move the button to a random position within the container, you damn fool!
+        const container = document.querySelector('.container');
+        const containerRect = container.getBoundingClientRect();
+        const btnRect = forgiveButton.getBoundingClientRect();
+        const maxX = containerRect.width - btnRect.width;
+        const maxY = containerRect.height - btnRect.height;
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        forgiveButton.style.left = randomX + 'px';
+        forgiveButton.style.top = randomY + 'px';
+      }
+    });
+
+    forgiveButton.addEventListener('click', function() {
+      attempts++;
+      if (attempts >= 3) {
+        // Show the love message and hide the damn button after enough attempts, you persistent idiot!
+        loveMessage.style.display = 'block';
+        forgiveButton.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
