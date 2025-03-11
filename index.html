@@ -2,219 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashverse</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <title>Wafia's Madness Meter</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f7e1f0;
+            padding: 50px;
+        }
+        #meter {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #forgiveBtn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+        }
+        #finalMessage {
+            display: none;
+            font-size: 24px;
+            color: darkred;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<div id="header">
-    <div class="container">
-        <nav>
-            <img src="images/logo.png" class="logo">
-            <ul id="sidemenu">
-                <li><a href="#header">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <i class="fas fa-times" onclick="closemenu()"></i>
-            </ul>
-            <i class="fas fa-bars" onclick="openmenu()"></i>
-        </nav>
-        <div class="header-text">
-            <p>Ethical hacker</p>
-            <h1>Hi, I'm <span>Ashik</span><br>From India</h1>
-        </div>
-    </div>
-</div>
-<!-- -----------about---------- -->
-<div id="about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1">
-                <img src="images/user.png">
-            </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p>Hey there! I'm Ashik, but you can call me Ash—no cape, just code. I'm an ethical hacking researcher with a passion for exploring the thrilling and complex world of cybersecurity. I thrive on solving puzzles, breaking down barriers, and building innovative solutions to stay ahead of the ever-evolving digital landscape.</p>
+    <h1>Wafia's Madness Meter 🔥</h1>
+    <p>Analyzing... Please wait...</p>
+    <p id="meter">0%</p>
+    
+    <button id="forgiveBtn" onclick="showLove()">Click to Forgive Ashik</button>
+    <p id="finalMessage">Okay, okay! I surrender! 😍 I love you, my queen! ❤️</p>
+    
+    <script>
+        let meter = document.getElementById("meter");
+        let forgiveBtn = document.getElementById("forgiveBtn");
+        let finalMessage = document.getElementById("finalMessage");
+        let angerLevel = 0;
+        let interval = setInterval(() => {
+            angerLevel += 10;
+            meter.innerText = angerLevel + "%";
+            if (angerLevel >= 99) {
+                clearInterval(interval);
+                meter.innerText = "WARNING! Wafia is too mad! 😱";
+            }
+        }, 500);
 
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                    <p class="tab-links" onclick="opentab('education')">Education</p>
-                </div>
-                <div class="tab-contents active-tab" id="skills">
-                    <ul>
-                        <li><span>Ethical hacking</span><br>cyber security researcher</li>
-                        <li><span>Web Development</span><br>Flutter fullstack web developer</li>
-                        <li><span>Ai automation</span><br>ai and automatomation researcher</li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="experience">
-                    <ul>
-                        <li><span>2022</span><br>Worked with london universirty student project cyber security automation.</li>
-                        <li><span>2023</span><br>Ai whatsapp cyber securty bot created.</li>
-                        <li><span>2022</span><br>Google bug hunting reward winner.</li>
-                        <li><span>current</span><br>CTO at infoqio pvltd.</li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="education">
-                    <ul>
-                        <li><span>2022</span><br>Mannarkkad nit(computer operator and programming assistant)</li>
-                        <li><span>2022</span><br>Avodha skill learning platform (Ethical hacking).</li>
-                        <li><span>2023</span><br>Udemy full stack development Flutter.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ---------services---------------- -->
-<div id="services">
-    <div class="container">
-        <h1 class="sub-title">My Services</h1>
-        <div class="services-list">
-            <div>
-                <i class="fas fa-code"></i>
-                <h2>Web security report including (owasp top 10)</h2>
-                <p>In today's digital landscape, protecting web applications from threats is non-negotiable. I offer comprehensive web security reports, meticulously analyzing vulnerabilities based on the OWASP Top 10 standards. From identifying injection flaws and broken access control to securing sensitive data and preventing cross-site scripting (XSS) attacks, my service delivers actionable insights to fortify your web assets.
+        forgiveBtn.addEventListener("mouseover", () => {
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 100);
+            forgiveBtn.style.left = x + "px";
+            forgiveBtn.style.top = y + "px";
+        });
 
-                    By leveraging advanced penetration testing techniques and ethical hacking expertise, I provide not just a report but a roadmap to safeguard your digital presence.</p>
-                <a href="#">Learn more</a>
-            </div>
-            <div>
-                <i class="fas fa-crop-alt"></i>
-                <h2>Flask full-stack development</h2>
-                <p>Looking to transform your ideas into robust, scalable, and efficient web applications? I offer top-tier Flask Full-Stack Development services, blending the power of Python's lightweight framework with modern frontend technologies. With expertise in backend logic, RESTful API creation, and seamless integration of databases like MongoDB and PostgreSQL, I craft dynamic applications that perform exceptionally well.</p>
-                <a href="#">Learn more</a>
-            </div>
-            <div>
-                <i class="fab fa-app-store"></i>
-                <h2>cybersecurity penetration testing tools automation</h2>
-                <p>Efficient and scalable penetration testing is key to maintaining secure digital environments. My service automates cybersecurity pentesting tools to enhance testing accuracy, streamline workflows, and reduce the manual effort required for identifying vulnerabilities. From automating Nmap scans to dynamic vulnerability assessments, I ensure that your systems remain fortified against emerging threats.
-
-                    By integrating advanced scripting and automation techniques, I empower organizations with faster, smarter, and more comprehensive security evaluations.</p>
-                <a href="#">Learn more</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ----------portfolio------------ -->
-<div id="portfolio">
-    <div class="container">
-        <h1 class="sub-title">My Work</h1>
-        <div class="work-list">
-            <div class="work">
-                <img src="images/work-1.png">
-                <div class="layer">
-                    <h3>Whatsapp automation for hackers</h3>
-                    <p>automated cybersecurity tools for hackers using nodejs.</p>
-                    <a href="https://github.com/mhdashikofficial/cybermaster-bot.git"><i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/work-2.png">
-                <div class="layer">
-                    <h3>Who is lookup tool</h3>
-                    <p>This tool allows you to perform a WHOIS lookup for any domain, giving you information such as domain creation date, expiration date, registrar, and more!.</p>
-                    <a href="https://github.com/mhdashikofficial/Whois.git"><i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/work-3.png">
-                <div class="layer">
-                    <h3>Recon-master</h3>
-                    <p>simple application for automating recon process in web penetration testing.</p>
-                    <a href="https://github.com/cybermasterteam/Recon-master.git"><i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-        </div>
-        <a href="#" class="btn">See more</a>
-    </div>
-</div>
-<!-- ----------contact------------- -->
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact Me</h1>
-                <p><i class="fas fa-paper-plane"></i> mhdashikofficial@gmail.com</p>
-                <p><i class="fas fa-phone-square-alt"></i> +15812905813(whatsapp only)</p>
-                <div class="social-icons">
-                    <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-twitter-square"></i></a>
-                    <a href="https://instagram.com/byyy.ash"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/muhammed-ashik-b90ba0215/?originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
-                </div>
-                
-            </div>
-            <div class="contact-right">
-                <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                </form>
-                <span id="msg"></span>
-            </div>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>Copyright © Ashik. Made wtih <i class="fas fa-heart"></i> by <a href="#">Ash verse</a></p>
-    </div>
-</div>
-
-
-
-<script>
-
-    var tablinks = document.getElementsByClassName("tab-links");
-    var tabcontents = document.getElementsByClassName("tab-contents");
-
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
+        function showLove() {
+            forgiveBtn.style.display = "none";
+            finalMessage.style.display = "block";
         }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-    }
-
-</script>
-
-<script>
-
-    var sidemeu = document.getElementById("sidemenu");
-
-    function openmenu(){
-        sidemeu.style.right = "0";
-    }
-    function closemenu(){
-        sidemeu.style.right = "-200px";
-    }
-
-</script>
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxV4shtIw7kkk3FuKIYK1Eyl8UV5mgB5X8pvCt_Gf02z-QJV6fQxBFxfWQBXNT5EyewPA/exec' // add your own app script link here
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message sent successfully"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            },5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
+    </script>
 </body>
 </html>
