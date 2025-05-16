@@ -1,126 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wafia's Anger Scanner 💖</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            width: 350px;
-            margin: auto;
-        }
-        h1 {
-            color: #ff5e62;
-            font-size: 1.8em;
-        }
-        p {
-            color: #333;
-            font-size: 1.2em;
-        }
-        .progress {
-            width: 100%;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 20px;
-            margin-top: 10px;
-        }
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: #ff5e62;
-            transition: width 2s ease-in-out;
-        }
-        #loveMessage {
-            display: none;
-            font-size: 1.5em;
-            color: #ff5e62;
-            margin-top: 20px;
-        }
-        .heart-button {
-            background: #ff5e62;
-            border: none;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            cursor: pointer;
-            display: none;
-            margin-top: 20px;
-        }
-        .heart-button:hover {
-            background: #ff7b7b;
-        }
-        .hearts {
-            font-size: 30px;
-            position: absolute;
-            animation: floatUp 3s infinite ease-in-out;
-            opacity: 0;
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100px); opacity: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>My Heart for Waffy</title>
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .heart {
+      fill: red;
+      position: relative;
+      top: 5px;
+      width: 150px;
+      animation: pulse 1s ease infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      color: white;
+      font-family: sans-serif;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Wafia's Anger Scanner 😳💖</h1>
-        <p>Scanning Wafia's Mood... Please wait... 😬</p>
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <p id="scanResult" style="display: none;">
-            WARNING! Wafia's beauty is too powerful! 💖  
-            Ashik is now **100% in love!** 😍
-        </p>
-        <button class="heart-button" id="forgiveButton">Tap to Receive Love 💘</button>
-        <p id="loveMessage">Yay! You are now officially the **cutest, most loved queen!** 😍💖</p>
-    </div>
-
-    <script>
-        const progressBar = document.getElementById('progressBar');
-        const scanResult = document.getElementById('scanResult');
-        const forgiveButton = document.getElementById('forgiveButton');
-        const loveMessage = document.getElementById('loveMessage');
-
-        // Fake progress bar animation
-        setTimeout(() => {
-            progressBar.style.width = "100%";
-            setTimeout(() => {
-                scanResult.style.display = "block";
-                forgiveButton.style.display = "inline-block";
-            }, 1000);
-        }, 1000);
-
-        // Button click event
-        forgiveButton.addEventListener('click', function() {
-            loveMessage.style.display = "block";
-            createHearts();
-        });
-
-        // Function to create floating hearts
-        function createHearts() {
-            for (let i = 0; i < 10; i++) {
-                let heart = document.createElement('div');
-                heart.classList.add('hearts');
-                heart.innerHTML = "❤️";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.top = Math.random() * 100 + "vh";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 3000);
-            }
-        }
-    </script>
+  <h1>My Heart Beats for Waffy</h1>
+  <svg class="heart" viewBox="0 0 32 29.6">
+    <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4
+      c0,4.4,3.5,8.2,8.8,13.2c2.7,2.4,5.6,4.7,7.2,5.9c1.6-1.2,4.5-3.5,7.2-5.9
+      C28.5,16.6,32,12.8,32,8.4C32,3.8,28.2,0,23.6,0z"/>
+  </svg>
 </body>
 </html>
