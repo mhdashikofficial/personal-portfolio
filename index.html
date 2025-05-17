@@ -14,7 +14,7 @@
     }
     .container {
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -56,6 +56,21 @@
       border-radius: 20px;
       margin-top: 2rem;
     }
+    .click-heart {
+      font-size: 3rem;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+      margin: 1rem;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .score {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -64,18 +79,20 @@
       <p>Hey Waffy 🐱,</p>
       <p>This isn't just a website... it's my heart in code. ❤️</p>
       <p>From the moment I met you, my world flipped like a bat's cape in the wind 🦇.</p>
-      <p>You’re sketchy (literally and emotionally 😏), cold outside but sweet deep down.</p>
+      <p>You were sweet from the beginning, even if you pretended to be tough 😉</p>
       <p>I fell for you — hard, completely, recklessly. You became my muse, my calm in chaos.</p>
-      <p>Even when you act distant, even when you say I'm not romantic... baby, you're my whole damn poetry.</p>
-      <p>But guess what? This story has a little twist 💔➡️❤️‍🔥</p>
-      <p>Click below to continue and see what I’ve made for you, my icy queen 🔥❄️</p>
+      <p>I love every single layer of you — the artist, the lover, the sunshine you hide behind that calm smile.</p>
+      <p>This story has a twist 💕</p>
+      <p>Click below to continue and play a little game I made just for you 🥰</p>
       <button onclick="showGame()">Next ➡️</button>
     </div>
 
     <div class="game-section" id="game">
-      <h2>Mini Game: Unfreeze Waffy</h2>
-      <p>Help Batman melt Waffy's icy heart 🧊❤️</p>
-      <button onclick="alert('You clicked! Imagine puzzle challenge here 😉')">Melt the Ice 🔥</button>
+      <h2>Mini Game: Click My Heart 💖</h2>
+      <p>Click on the heart as many times as you can in 10 seconds 😘</p>
+      <div class="click-heart" onclick="clickHeart()">❤️</div>
+      <div class="score" id="score">Score: 0</div>
+      <button id="startBtn" onclick="startGame()">Start Game 🎮</button>
       <button onclick="showLetter()">Continue ➡️</button>
     </div>
 
@@ -83,7 +100,7 @@
       <h2>A Love Letter for You 💌</h2>
       <p>
         My dearest Waffy,<br/><br/>
-        You're the chaos I crave and the calm I need. I love every side of you — your cold sarcasm, your creative soul, your unfiltered honesty. This world may be a mess, but when I hear your voice or see your art, everything makes sense. You're not just my girlfriend, you're my greatest inspiration, my north star, my Catwoman. 💋<br/><br/>
+        You're the chaos I crave and the calm I need. I love every side of you — your artistic heart, your gentle soul, your radiant energy. This world may be a mess, but when I hear your voice or see your art, everything makes sense. You're not just my girlfriend, you're my greatest inspiration, my north star, my Catwoman. 💋<br/><br/>
         Forever yours,<br/>
         Your unromantic Batman 😘
       </p>
@@ -92,12 +109,16 @@
 
     <div class="video-section" id="video">
       <h2>For My Queen 👑</h2>
-      <p>This video? i mad this edit for you ❤️</p>
+      <p>This video? It's your love story... told by me. Watch it till the end ❤️</p>
       <iframe width="560" height="315" src="YOUR_VIDEO_LINK_HERE" title="Waffy Love Video" allowfullscreen></iframe>
     </div>
   </div>
 
   <script>
+    let score = 0;
+    let isPlaying = false;
+    let gameTimer;
+
     function showGame() {
       document.getElementById('story').style.display = 'none';
       document.getElementById('game').style.display = 'block';
@@ -111,6 +132,25 @@
     function showVideo() {
       document.getElementById('letter').style.display = 'none';
       document.getElementById('video').style.display = 'block';
+    }
+
+    function startGame() {
+      score = 0;
+      isPlaying = true;
+      document.getElementById('score').innerText = 'Score: 0';
+      document.getElementById('startBtn').disabled = true;
+      gameTimer = setTimeout(() => {
+        isPlaying = false;
+        document.getElementById('startBtn').disabled = false;
+        alert('Time's up, my queen! ❤️ Your final score is: ' + score);
+      }, 10000);
+    }
+
+    function clickHeart() {
+      if (isPlaying) {
+        score++;
+        document.getElementById('score').innerText = 'Score: ' + score;
+      }
     }
   </script>
 </body>
